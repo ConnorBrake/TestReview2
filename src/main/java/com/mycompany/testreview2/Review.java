@@ -248,13 +248,14 @@ public class Review {
       if(transformer.substring(k, k + 1).equals("*")){
         int startI = transformer.indexOf("*");
         for(int i = transformer.indexOf("*"); i < transformer.length(); i++){
-          if(transformer.substring(i, i + 1).equals(" ")){
+          if(transformer.substring(i + 1, i + 2).equals(" ")){
             placeHolder = randomNegativeAdj();
+            //Finds a more negitive adjective to replace the adjicitve with
             while(sentimentVal(placeHolder) >= sentimentVal(transformer))
             {
                 placeHolder = randomNegativeAdj();
             }
-            newString += placeHolder + " ";
+            newString += placeHolder;
             placeHolder = "";
             int endI = i;
             transformer = transformer.replace(transformer.substring(startI, endI), "");
